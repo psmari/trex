@@ -59,13 +59,13 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(600, 200);
     trex = createSprite(100, 140, 10, 10);
     trex.addAnimation('trex andando', animacao);
     trex.scale = 0.5;
     trex.setCollider('circle', -10, 0, 45);
   
-    trex.debug = true;
+    // trex.debug = true;
     trex.addAnimation('trex parado', animacaoDerrota);
 
     spriteGameOver = createSprite(width/2, 100);
@@ -170,7 +170,6 @@ function reset() {
 }
 
 function draw() {
-    console.log(touches.length);
     background('white');
     drawSprites();
 
@@ -183,10 +182,9 @@ function draw() {
         placar = placar + Math.round(frameRate() / 60);
         console.log(placar % 100 == 0);
         
-        if((keyDown('space') || touches.length > 0) && trex.y > 166) {
+        if(keyDown('space') && trex.y > 166) {
             trex.velocityY = -10;
             jump.play();
-            touches = [];
         }
         
 
